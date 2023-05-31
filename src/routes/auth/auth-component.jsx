@@ -3,10 +3,11 @@ import {getRedirectResult} from 'firebase/auth'; // for GOOGLE REDIRECT
 
 import { auth, signInWithGooglePopup, signInWithGoogleRedirect, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 import SignUpForm from '../../components/sign-up/sign-up-component';
+import SignInForm from '../../components/sign-in/sign-in-component';
+import "./auth.scss"
 
 
-
-const SignIn = () => {
+const Auth = () => {
 
     // for GOOGLE REDIRECT
     // useEffect(() => {
@@ -30,13 +31,11 @@ const SignIn = () => {
 
 
     return (
-        <div>
-            <h1> Sign in Page </h1>
-            <button onClick={logGoogleUser}> Sign In with Google Popup</button>
-            {/* <button onClick={signInWithGoogleRedirect}> Sign In with Google Redirect </button> */}
+        <div className='authentication-container'>
+            <SignInForm />
             <SignUpForm />
         </div>
     );
 };
 
-export default SignIn;
+export default Auth;

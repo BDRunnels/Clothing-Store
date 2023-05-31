@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Home from "./routes/home/home-component";
 import Navigation from './routes/navigation/navigation-component';
-import SignIn from './routes/sign-in/sign-in-component';
+import Auth from './routes/auth/auth-component';
 
 
 const Shop = () => {
@@ -20,7 +20,7 @@ const App = () => {
       <Route path='/' element={<Navigation />}>
         <Route index element={<Home />} /> {/* index is an attribute, defaults to true, it says render this child element when path matches */}
         <Route path='shop' element={<Shop />} />
-        <Route path='sign-in' element={<SignIn />} />
+        <Route path='auth' element={<Auth />} />
       </Route>
     </Routes>
   );

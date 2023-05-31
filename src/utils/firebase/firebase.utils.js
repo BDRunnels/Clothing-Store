@@ -1,7 +1,7 @@
 // This file is what Google wants. 
 
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword  } from 'firebase/auth';
+import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'; // doc gets data. 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -69,4 +69,10 @@ const firebaseConfig = {
     if ( !email || !password) return;
 
     return await createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  export const signInAuthUserWithEmailAndPassword = async (email, password) => {
+    if ( !email || !password) return;
+    
+    return await signInWithEmailAndPassword(auth, email, password);
   };
