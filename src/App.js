@@ -12,7 +12,7 @@ const App = () => {
     <Routes>
       <Route path='/' element={<Navigation />}>
         <Route index element={<Home />} /> {/* index is an attribute, defaults to true, it says render this child element when path matches */}
-        <Route path='shop' element={<Shop />} />
+        <Route path='shop/*' element={<Shop />} />
         <Route path='auth' element={<Auth />} />
         < Route path='checkout' element={<Checkout />} />
       </Route>
