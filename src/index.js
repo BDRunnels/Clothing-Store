@@ -3,13 +3,16 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import './index.scss';
 import App from './App';
+import { UserProvider } from './contexts/user-context';
 import reportWebVitals from './reportWebVitals';
 
 const root = createRoot(document.getElementById('app'))
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <UserProvider> {/* parent level component where the user object is stored, thus passed down with useContext. */}
+        <App />
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,7 +1,17 @@
 // This file is what Google wants. 
 
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword  } from 'firebase/auth';
+import { 
+  getAuth, 
+  signInWithRedirect, 
+  signInWithPopup, 
+  GoogleAuthProvider, 
+  createUserWithEmailAndPassword, 
+  signInWithEmailAndPassword, 
+  signOut, 
+  onAuthStateChanged } //onAuthStateChanged will return back a listener. 
+  from 'firebase/auth';
+
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore'; // doc gets data. 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -76,3 +86,13 @@ const firebaseConfig = {
     
     return await signInWithEmailAndPassword(auth, email, password);
   };
+
+  export const signOutUser = async () => await signOut(auth); // auth is keeping track of signed-in user. 
+
+  export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback, /* errorCallback, completedCallback */); 
+  // 2 parameters (auth, callback everytime auth state changes).  It is always listening for auth state changes. 
+  // when clicked: {
+  //   next: callback,
+  //   error: errorCallback,
+  //   complete: completedCallback
+  // }

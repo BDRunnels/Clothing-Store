@@ -5,6 +5,7 @@ import Button from '../button/button-component';
 
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 
+// import { UserContext } from '../../contexts/user-context'; // hooking in to useContext to re-render this component.
 import './sign-up-form.scss'
 
 const defaultFormFields = {
@@ -18,6 +19,9 @@ const SignUpForm = () => {
     // Normally could use 4 useState (one for each input)
     const [formFields, setFormFields] = useState(defaultFormFields)
     const { displayName, email, password, confirmPassword } = formFields;
+
+    // const { setCurrentUser } = useContext(UserContext);
+    // const val = useContext(UserContext); // initializing the value to re-render. Glorified hook to update the component.    
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields);
@@ -35,10 +39,8 @@ const SignUpForm = () => {
 
         try {
             const {user} = await createAuthUserWithEmailAndPassword(email, password); // email and pw are destructured off of formFields object (line 15)
-            // console.log('response user', response.user);
-            
-            // const user = response.user
-            console.log('user', user)
+
+            // setCurrentUser(user);
 
             await createUserDocumentFromAuth(user, {displayName});
             resetFormFields();
