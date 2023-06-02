@@ -10,7 +10,7 @@ import { CartContext } from "../../contexts/cart-context";
 
 import { signOutUser } from "../../utils/firebase/firebase.utils";
 
-import "./navigation-styles.scss";
+import {NavigationContainer, NavLinks, NavLink, LogoContainer} from "./navigation-styles";
 
 const Navigation = () => {
     const { currentUser } = useContext(UserContext); //useContext as a hook tells this component when this value changes, re-render this component.
@@ -25,31 +25,31 @@ const Navigation = () => {
 
     return (
     <Fragment>
-        <div className="navigation">
-            <Link className="logo-container" to="/">
+        <NavigationContainer>
+            <LogoContainer to="/">
                 <Logo className="logo" />
-            </Link>
-            <div className="nav-links-container">
-            <Link className="nav-link" to="/shop">
-                SHOP
-            </Link>
-            {
-                currentUser ? (
-                    <span className="nav-link" onClick={signOutUser}> 
-                        SIGN OUT 
-                    </span>
-                )
-                    : (
-                    <Link className="nav-link" to="/auth">
-                        SIGN IN
-                    </Link>
-                )
-            }
-            <CartIcon />
-            </div>
+            </LogoContainer>
+            <NavLinks>
+                <NavLink to="/shop">
+                    SHOP
+                </NavLink>
+                {
+                    currentUser ? (
+                        <NavLink as='span' onClick={signOutUser}> 
+                            SIGN OUT 
+                        </NavLink>
+                    )
+                        : (
+                        <NavLink className="nav-link" to="/auth">
+                            SIGN IN
+                        </NavLink>
+                    )
+                }
+                <CartIcon />
+            </NavLinks>
             { isCartOpen && <CartDropDown />}
             {/* // && short-circuit operator evaluates as true if left and right are truthy. isCartOpen boolean and component function (always true). */}
-        </div>
+        </NavigationContainer>
         <Outlet />
     </Fragment>
     );
