@@ -24,7 +24,12 @@ export const NavLinks = styled.div`
 `
 export const NavLink = styled(Link)`
       padding: 10px 15px;
+      font-size: 18px;
+      font-weight: bold;
       cursor: pointer;
+      :hover {
+            color: blue
+      }
 `
 
 // SCSS

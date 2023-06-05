@@ -29,6 +29,7 @@ const Navigation = () => {
             <LogoContainer to="/">
                 <Logo className="logo" />
             </LogoContainer>
+            <h3 style={{marginLeft: "-500px", marginTop: "35px"}}> HANDWORK CLOTHING </h3>
             <NavLinks>
                 <NavLink to="/shop">
                     SHOP

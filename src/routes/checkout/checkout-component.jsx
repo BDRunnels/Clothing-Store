@@ -28,13 +28,16 @@ const Checkout = () => {
                 </div>
             </div>
                 {
-                    cartItems.map((cartItem) => {
+                    cartItems.length ? cartItems.map((cartItem) => {
                         return (
                             <CheckoutItem key={cartItem.id} cartItem={cartItem}/>
                         )
-                    })
+                    }) : <h1> No items in your cart </h1>
                 }
-            <span className='total'> Total: ${total}</span>
+                {
+                    cartItems.length ? <span className='total'> Total: ${total}</span> : ''
+                }
+            
         </div>
     );
 };

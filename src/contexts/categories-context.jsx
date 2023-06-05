@@ -1,6 +1,6 @@
 // createContext is the storage itself.
 import { createContext, useState, useEffect } from 'react';
-import SHOP_DATA from '../shop-data.js'
+// import SHOP_DATA from '../shop-data.js'
 
 import { getCategoriesAndDocs } from '../utils/firebase/firebase.utils.js';
 
